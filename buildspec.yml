@@ -4,6 +4,12 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR; npm install
       - cd $CODEBUILD_SRC_DIR/s3-deployment-custom-resource; npm install
+  pre_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR; node configure.js $STAGE
+  build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR; npm run build
   post_build:
     commands:
       - cd $CODEBUILD_SRC_DIR/build; zip -r ../AuthFunction.zip *
