@@ -13,3 +13,4 @@ artifacts:
   files:
     - cfaTemplate.yaml
     - '**/*'
+  discard-paths: yes
