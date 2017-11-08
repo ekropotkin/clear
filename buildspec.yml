@@ -14,8 +14,8 @@ phases:
       - cd build-output/
       - zip -qr AuthFunction.zip ./*
       - mv AuthFunction.zip ../
-      - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-us-east-1-386289756274 --output-template-file cfaTemplate.yaml
       - echo Build completed on `date`
+      - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-us-east-1-386289756274 --output-template-file cfaTemplate.yaml
 artifacts:
   type: zip
   files:
