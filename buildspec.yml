@@ -1,0 +1,10 @@
+version: 0.1
+phases:
+  install:
+    commands:
+      - npm install
+      - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cf0Template.yaml
+artifacts:
+  type: zip
+  files:
+    - cf0Template.yaml
