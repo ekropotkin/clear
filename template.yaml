@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs6.10
-      CodeUri: ./
+      CodeUri: s3://deploy-nicho9pi-us-east-1/AuthFunction.zip
       Events:
         MyTimeApi:
           Type: Api
