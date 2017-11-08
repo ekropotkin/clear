@@ -11,4 +11,5 @@ phases:
 artifacts:
   type: zip
   files:
-    - '**/*'
+    - cfaTemplate.yaml
+    - '**/*.zip'
