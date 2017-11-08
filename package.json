@@ -1,0 +1,10 @@
+{
+  "name": "deploy-AuthFunction",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "deploy-lambda deploy -c deploy-config.json"
+  },
+  "devDependencies": {
+    "deploy-lambda": "1.2.0"
+  }
+}
