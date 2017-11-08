@@ -8,7 +8,7 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - mkdir build-output
-      - cp -R folder1/myfile.js build-output
+      - cp -R *.js build-output
       - mkdir -p build-output/node_modules
       - cp -R node_modules/* build-output/node_modules
       - cd build-output/
