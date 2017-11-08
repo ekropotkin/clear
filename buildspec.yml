@@ -7,9 +7,18 @@ phases:
   post_build:
     commands:
       - echo Entered the post_build phase...
+      - mkdir build-output
+      - cp -R folder1/myfile.js build-output
+      - mkdir -p build-output/node_modules
+      - cp -R node_modules/* build-output/node_modules
+      - cd build-output/
+      - zip -qr AuthFunction.zip ./*
+      - mv AuthFunction.zip ../
       - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-us-east-1-386289756274 --output-template-file cfaTemplate.yaml
+      - echo Build completed on `date`
 artifacts:
   type: zip
   files:
     - cfaTemplate.yaml
-  discard-paths: yes
+    - AuthFunction.zip
+
