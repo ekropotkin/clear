@@ -3,12 +3,10 @@ phases:
   install:
     commands:
       - echo Entered the Install phase...
-      - cd $CODEBUILD_SRC_DIR; npm install
-      - cd $CODEBUILD_SRC_DIR/s3-deployment-custom-resource; npm install
+      - npm install
   post_build:
     commands:
       - echo Entered the post_build phase...
-      - cd $CODEBUILD_SRC_DIR/build; zip -r ../AuthFunction.zip *
       - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-us-east-1-386289756274 --output-template-file cfaTemplate.yaml
 artifacts:
   type: zip
