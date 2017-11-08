@@ -2,9 +2,15 @@ version: 0.1
 phases:
   install:
     commands:
-      - npm install
+      - cd $CODEBUILD_SRC_DIR; npm install
+      - cd $CODEBUILD_SRC_DIR/s3-deployment-custom-resource; npm install
+  post_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR/build; zip -r ../AuthFunction.zip *
       - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cfaTemplate.yaml
 artifacts:
   type: zip
   files:
     - cfaTemplate.yaml
+    - AuthFunction.zip
+  discard-paths: yes
