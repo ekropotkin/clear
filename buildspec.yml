@@ -3,7 +3,8 @@ phases:
   install:
     commands:
       - echo Entered the Install phase...
-      - npm install -g
+      - npm install lambda-deploy-codepipeline-artifact-to-s3-website --save
+      - npm run build
   post_build:
     commands:
       - echo Entered the post_build phase...
