@@ -5,6 +5,7 @@ phases:
       - npm install
       - cd $CODEBUILD_SRC_DIR
       - npm install npm-install-all
+      - npm install aws-sdk fs
   pre_build:
     commands:
       - cd $CODEBUILD_SRC_DIR; node configure.js $STAGE
