@@ -5,18 +5,8 @@ phases:
       - npm install
       - cd $CODEBUILD_SRC_DIR
       - npm install
-  post_build:
-    commands:
-      - cd $CODEBUILD_SRC_DIR
-      - node configure.js $STAGE
-   build:
-      commands:
-      - cd $CODEBUILD_SRC_DIR
-      - npm run build
-      - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cfaTemplate.yaml
-      - zip -r auth.zip .
+      - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cfbTemplate.yaml
 artifacts:
   type: zip
   files:
-    - cfaTemplate.yaml
-    - auth.zip
+    - cfbTemplate.yaml
