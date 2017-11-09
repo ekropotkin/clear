@@ -1,5 +1,5 @@
 {
-  "name": "deploy-AuthFunction",
+  "name": "AuthFunction",
   "version": "1.0.0",
   "scripts": {"start": "node index.js"}
 }
