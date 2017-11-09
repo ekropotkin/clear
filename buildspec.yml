@@ -5,8 +5,8 @@ phases:
       - npm install
       - cd $CODEBUILD_SRC_DIR
       - npm install
-      - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cfbTemplate.yaml
+      - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cfaTemplate.yaml
 artifacts:
   type: zip
   files:
-    - cfbTemplate.yaml
+    - cfaTemplate.yaml
