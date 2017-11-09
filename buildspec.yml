@@ -3,16 +3,21 @@ phases:
   install:
     commands:
       - echo Entered the Install phase...
+      - printenv
       - npm install lambda-deploy-codepipeline-artifact-to-s3-website --save
+      - ls -l
   post_build:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
       - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-us-east-1-386289756274 --output-template-file cfaTemplate.yaml
+      - npm install -g serverless
+      - serverless -v -s $(echo ${CODEBUILD_INITIATOR} | cut -d'/' -f2 | cut -d'_' -f3) deploy
+      - ls -l
 artifacts:
   type: zip
   files:
     - cfaTemplate.yaml
+    - */**
   discard-paths: yes
-
 
