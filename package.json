@@ -2,7 +2,4 @@
   "name": "deploy-AuthFunction",
   "version": "1.0.0",
   "scripts": {"start": "node index.js"}
-  "devDependencies": {
-    "deploy-lambda": "1.2.0"
-  }
 }
