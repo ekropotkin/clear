@@ -2,17 +2,20 @@ version: 0.1
 phases:
   install:
     commands:
-      - npm install -g mocha
       - npm install
-      - npm install aws-sdk
+      - npm install async
   post_build:
     commands:
+      - rm -rf dist && rm -f archive.zip && mkdir dist && mkdir dist/lib
+      - cp index.js dist/ && cp -r lib/*.js dist/lib
+      - cp package.json dist/ && cd dist && npm install --production
+      - npm-run-all -s build-init build:copy build:install
+      - cd dist && zip -rq auth.zip .
+      
       - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cfaTemplate.yaml
       - zip -r app-api.zip .
-      - lambda-packager package AuthFunction AuthFunction.zip
 artifacts:
   type: zip
   files:
     - cfaTemplate.yaml
-    - app-api.zip
-    - AuthFunction.zip
+    - auth.zip
