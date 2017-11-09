@@ -4,7 +4,7 @@ phases:
     commands:
       - npm install
       - cd $CODEBUILD_SRC_DIR
-      - npm install
+      - npm install index.js
       - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cfaTemplate.yaml
 artifacts:
   type: zip
