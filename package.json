@@ -1,14 +1,10 @@
 {
-  "name": "AuthFunction",
-  "main": "index.js",
+  "name": "deploy-AuthFunction",
   "version": "1.0.0",
   "scripts": {
-    "setup": "mkdir -p dist",
-    "bundle": "zip -r dist/bundle.zip node_modules && zip -j dist/bundle.zip src/index.js",
-    "deploy": "aws lambda update-function-code --function-name CodePipelineExecutor --zip-file fileb://./dist/bundle.zip",
-    "build": "npm install && npm run setup && npm run bundle && npm run deploy"
+    "deploy": "deploy-lambda deploy -c deploy-config.json"
   },
-  "scripts": {
-    "start": "node index.js"
+  "devDependencies": {
+    "deploy-lambda": "1.2.0"
   }
 }
