@@ -7,11 +7,10 @@ phases:
   post_build:
     commands:
       - rm -rf dist && rm -f archive.zip && mkdir dist && mkdir dist/lib
-      - cp index.js dist/ && cp -r lib/*.js dist/lib
+      - cp index.js dist/ && cp -r node_modules/*.js dist/node_modules
       - cp package.json dist/ && cd dist && npm install --production
       - npm-run-all -s build-init build:copy build:install
       - cd dist && zip -rq auth.zip .
-      
       - aws cloudformation package --template-file template.yaml --s3-bucket deploy-nicho9pi-us-east-1 --output-template-file cfaTemplate.yaml
       - zip -r app-api.zip .
 artifacts:
