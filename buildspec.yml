@@ -7,7 +7,7 @@ phases:
   post_build:
     commands:
       - rm -rf dist && rm -f archive.zip && mkdir dist && mkdir dist/lib
-      - cp index.js dist/ && cp -r node_modules/*.js dist/node_modules
+      - cp index.js dist/ && cp -r node_modules/*.* dist/node_modules
       - cp package.json dist/ && cd dist && npm install --production
       - npm-run-all -s build-init build:copy build:install
       - cd dist && zip -rq auth.zip .
